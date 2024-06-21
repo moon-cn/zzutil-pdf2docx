@@ -5,12 +5,12 @@ import uuid
 
 from flask import request, send_file
 
-#import pypandoc
 from pdf2docx import Converter
-
 
 app = Flask(__name__)
 CORS(app)
+
+
 @app.route('/')
 def home():
     return 'Hello, World3!'
@@ -37,7 +37,7 @@ def pdf_to_docx():
     print("output_folder " + output_file)
 
     print("开始转换...")
-   # pypandoc.convert_file(pdf_path, "docx", outputfile=output_file)
+    # pypandoc.convert_file(pdf_path, "docx", outputfile=output_file)
     cv = Converter(pdf_path)
 
     # 转换PDF到DOCX
@@ -50,8 +50,9 @@ def pdf_to_docx():
     # 提供ZIP文件下载
     return send_file(output_file, as_attachment=True)
 
-@app.route('/about')
-def about():
-    output = pypandoc.convert_text('# some title', 'json', format='md')
 
-    return output
+if __name__ == '__main__':
+    print("app start...")
+    port = os.getenv("PORT", default=5000)
+    print("app port: " + str(port))
+    app.run(debug=True, port=port, host='0.0.0.0')
