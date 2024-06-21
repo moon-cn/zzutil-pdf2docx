@@ -1,0 +1,7 @@
+Flask
+Werkzeug
+
+flask-cors
+
+
+pdf2docx
