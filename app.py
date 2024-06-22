@@ -37,7 +37,6 @@ def pdf_to_docx():
     print("output_folder " + output_file)
 
     print("开始转换...")
-    # pypandoc.convert_file(pdf_path, "docx", outputfile=output_file)
     cv = Converter(pdf_path)
 
     # 转换PDF到DOCX
@@ -46,6 +45,8 @@ def pdf_to_docx():
     # 关闭转换器
     cv.close()
     print("转换完成")
+
+    os.remove(pdf_path)
 
     # 提供ZIP文件下载
     return send_file(output_file, as_attachment=True)
