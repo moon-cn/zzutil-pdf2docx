@@ -13,7 +13,7 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return 'Hello, World3!'
+    return 'Hello, World！ PDF'
 
 
 @app.route('/pdf_to_docx', methods=['POST'])
